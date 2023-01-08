@@ -6,8 +6,15 @@ import com.pessoas_api.pessoas_api.core.entities.Pessoa;
 import com.pessoas_api.pessoas_api.core.services.PessoaCreationForm;
 import com.pessoas_api.pessoas_api.core.services.PessoaCreationService;
 import com.pessoas_api.pessoas_api.repositories.PessoaRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -29,7 +36,7 @@ public class PessoaController {
     }
 
     @PostMapping
-    ResponseEntity<PessoaDTO> criar(@RequestBody PessoaCreationForm form,
+    ResponseEntity<PessoaDTO> criar(@RequestBody @Valid PessoaCreationForm form,
                                     UriComponentsBuilder uriBuilder) {
         Pessoa novaPessoa = pessoaCreationService.createFrom(form);
 

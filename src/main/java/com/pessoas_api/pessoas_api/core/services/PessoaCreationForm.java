@@ -1,17 +1,17 @@
 package com.pessoas_api.pessoas_api.core.services;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pessoas_api.pessoas_api.core.entities.Endereco;
 import com.pessoas_api.pessoas_api.core.entities.Pessoa;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 public class PessoaCreationForm {
-    @JsonFormat(pattern = "dd/MM/yyyy")
     @NotNull
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
     @NotNull
     @Size(min = 3)
@@ -20,11 +20,30 @@ public class PessoaCreationForm {
     @Size(min = 3)
     private String logradouro;
     @NotNull
-    @Size(max = 8, min = 8, message = "CEP deve possuir 8 caracteres")
+    @Size(max = 8, min = 8)
     private String cep;
+    @Min(0)
     private Long numero;
+    @NotNull
+    @Size(min = 2)
     private String cidade;
+    @NotNull
+    @Size(min = 2, max = 2)
     private String uf;
+
+    public PessoaCreationForm() {
+
+    }
+
+    PessoaCreationForm(LocalDate dataNascimento, String nome, String logradouro, String cep, Long numero, String cidade, String uf) {
+        this.dataNascimento = dataNascimento;
+        this.nome = nome;
+        this.logradouro = logradouro;
+        this.cep = cep;
+        this.numero = numero;
+        this.cidade = cidade;
+        this.uf = uf;
+    }
 
     public String getNome() {
         return nome;

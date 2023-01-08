@@ -2,7 +2,6 @@ package com.pessoas_api.pessoas_api.core.entities;
 
 import jakarta.persistence.*;
 
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,10 +17,9 @@ public class Pessoa {
     private String nome;
     @Column(nullable = false)
     private LocalDate dataNascimento;
-    @OneToMany(cascade = CascadeType.ALL)
-    @Size(min = 1)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pessoa")
     private List<Endereco> enderecos = new ArrayList<>();
-    @OneToOne(optional = false)
+    @OneToOne(cascade = CascadeType.ALL)
     private Endereco enderecoPrincipal;
 
     @Deprecated

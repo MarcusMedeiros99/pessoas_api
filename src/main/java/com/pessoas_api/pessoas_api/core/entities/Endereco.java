@@ -8,12 +8,14 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String logradouro;
+    @Column(nullable = false, length = 8)
     private String cep;
     private Long numero;
+    @Column(nullable = false)
     private String cidade;
+    @Column(nullable = false, length = 2)
     private String uf;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Pessoa pessoa;
 
     @Deprecated
