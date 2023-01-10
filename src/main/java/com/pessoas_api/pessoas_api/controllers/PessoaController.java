@@ -1,20 +1,15 @@
 package com.pessoas_api.pessoas_api.controllers;
 
-import com.pessoas_api.pessoas_api.controllers.dto.EnderecoDTO;
 import com.pessoas_api.pessoas_api.controllers.dto.PessoaDTO;
 import com.pessoas_api.pessoas_api.core.entities.Pessoa;
 import com.pessoas_api.pessoas_api.core.services.PessoaCreationForm;
 import com.pessoas_api.pessoas_api.core.services.PessoaCreationService;
+import com.pessoas_api.pessoas_api.core.services.PessoaEditForm;
+import com.pessoas_api.pessoas_api.core.services.PessoaEditService;
 import com.pessoas_api.pessoas_api.repositories.PessoaRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.DefaultMessageSourceResolvable;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -28,11 +23,13 @@ public class PessoaController {
 
     private PessoaCreationService pessoaCreationService;
     private PessoaRepository pessoaRepository;
+    private PessoaEditService pessoaEditService;
 
     @Autowired
-    public PessoaController(PessoaCreationService pessoaCreationService, PessoaRepository pessoaRepository) {
+    public PessoaController(PessoaCreationService pessoaCreationService, PessoaRepository pessoaRepository, PessoaEditService pessoaEditService) {
         this.pessoaCreationService = pessoaCreationService;
         this.pessoaRepository = pessoaRepository;
+        this.pessoaEditService = pessoaEditService;
     }
 
     @PostMapping
@@ -66,5 +63,12 @@ public class PessoaController {
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(pessoas);
+    }
+
+    @PutMapping
+    ResponseEntity<Void> edit(@RequestBody @Valid PessoaEditForm form) {
+        pessoaEditService.edit(form);
+
+        return ResponseEntity.noContent().build();
     }
 }

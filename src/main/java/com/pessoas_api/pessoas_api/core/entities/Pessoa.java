@@ -60,6 +60,14 @@ public class Pessoa {
         return enderecoPrincipal;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

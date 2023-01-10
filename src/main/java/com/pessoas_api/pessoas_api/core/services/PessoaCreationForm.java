@@ -5,6 +5,7 @@ import com.pessoas_api.pessoas_api.core.entities.Endereco;
 import com.pessoas_api.pessoas_api.core.entities.Pessoa;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
@@ -20,7 +21,7 @@ public class PessoaCreationForm {
     @Size(min = 3)
     private String logradouro;
     @NotNull
-    @Size(max = 8, min = 8)
+    @Pattern(regexp = "[\\d]{8}")
     private String cep;
     @Min(0)
     private Long numero;
