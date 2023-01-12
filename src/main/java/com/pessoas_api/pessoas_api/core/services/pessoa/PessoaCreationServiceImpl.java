@@ -1,17 +1,18 @@
 package com.pessoas_api.pessoas_api.core.services.pessoa;
 
+import com.pessoas_api.pessoas_api.controllers.PessoaCreationService;
 import com.pessoas_api.pessoas_api.core.entities.Pessoa;
-import com.pessoas_api.pessoas_api.core.services.pessoa.forms.PessoaCreationForm;
+import com.pessoas_api.pessoas_api.controllers.forms.PessoaCreationForm;
 import com.pessoas_api.pessoas_api.repositories.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PessoaCreationService {
+public class PessoaCreationServiceImpl implements PessoaCreationService {
     private PessoaRepository pessoaRepository;
 
     @Autowired
-    public PessoaCreationService(PessoaRepository pessoaRepository) {
+    public PessoaCreationServiceImpl(PessoaRepository pessoaRepository) {
         this.pessoaRepository = pessoaRepository;
     }
 

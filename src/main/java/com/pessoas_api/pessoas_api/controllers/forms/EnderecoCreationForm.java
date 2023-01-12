@@ -1,4 +1,4 @@
-package com.pessoas_api.pessoas_api.core.services.endereco.forms;
+package com.pessoas_api.pessoas_api.controllers.forms;
 
 import com.pessoas_api.pessoas_api.core.entities.Endereco;
 import com.pessoas_api.pessoas_api.core.entities.Pessoa;

@@ -1,9 +1,10 @@
 package com.pessoas_api.pessoas_api.core.services.endereco;
 
+import com.pessoas_api.pessoas_api.controllers.EnderecoCreationService;
 import com.pessoas_api.pessoas_api.controllers.exceptions.PessoaNotFoundException;
 import com.pessoas_api.pessoas_api.core.entities.Endereco;
 import com.pessoas_api.pessoas_api.core.entities.Pessoa;
-import com.pessoas_api.pessoas_api.core.services.endereco.forms.EnderecoCreationForm;
+import com.pessoas_api.pessoas_api.controllers.forms.EnderecoCreationForm;
 import com.pessoas_api.pessoas_api.repositories.EnderecoRepository;
 import com.pessoas_api.pessoas_api.repositories.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,13 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class EnderecoCreationService {
+public class EnderecoCreationServiceImpl implements EnderecoCreationService {
     private PessoaRepository pessoaRepository;
     private final EnderecoRepository enderecoRepository;
 
     @Autowired
-    EnderecoCreationService(PessoaRepository pessoaRepository,
-                            EnderecoRepository enderecoRepository) {
+    EnderecoCreationServiceImpl(PessoaRepository pessoaRepository,
+                                EnderecoRepository enderecoRepository) {
         this.pessoaRepository = pessoaRepository;
         this.enderecoRepository = enderecoRepository;
     }

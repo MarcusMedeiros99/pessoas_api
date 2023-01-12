@@ -1,4 +1,4 @@
-package com.pessoas_api.pessoas_api.core.services.pessoa.forms;
+package com.pessoas_api.pessoas_api.controllers.forms;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotEmpty;

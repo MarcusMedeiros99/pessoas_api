@@ -1,7 +1,7 @@
 package com.pessoas_api.pessoas_api.core.services.pessoa;
 
 import com.pessoas_api.pessoas_api.core.entities.Pessoa;
-import com.pessoas_api.pessoas_api.core.services.pessoa.forms.PessoaCreationForm;
+import com.pessoas_api.pessoas_api.controllers.forms.PessoaCreationForm;
 import com.pessoas_api.pessoas_api.repositories.PessoaRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-class PessoaCreationServiceTest {
+class PessoaCreationServiceImplTest {
 
     @Autowired
-    private PessoaCreationService pessoaCreationService;
+    private PessoaCreationServiceImpl pessoaCreationService;
     @Mock
     private PessoaCreationForm pessoaCreationForm;
     @MockBean

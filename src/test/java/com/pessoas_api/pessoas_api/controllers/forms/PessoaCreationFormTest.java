@@ -1,7 +1,7 @@
-package com.pessoas_api.pessoas_api.core.services.pessoa;
+package com.pessoas_api.pessoas_api.controllers.forms;
 
 import com.pessoas_api.pessoas_api.core.entities.Pessoa;
-import com.pessoas_api.pessoas_api.core.services.pessoa.forms.PessoaCreationForm;
+import com.pessoas_api.pessoas_api.controllers.forms.PessoaCreationForm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,8 +1,9 @@
 package com.pessoas_api.pessoas_api.core.services.pessoa;
 
+import com.pessoas_api.pessoas_api.controllers.PessoaEditService;
 import com.pessoas_api.pessoas_api.controllers.exceptions.PessoaNotFoundException;
 import com.pessoas_api.pessoas_api.core.entities.Pessoa;
-import com.pessoas_api.pessoas_api.core.services.pessoa.forms.PessoaEditForm;
+import com.pessoas_api.pessoas_api.controllers.forms.PessoaEditForm;
 import com.pessoas_api.pessoas_api.repositories.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,11 +11,11 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class PessoaEditService {
+public class PessoaEditServiceImpl implements PessoaEditService {
     private PessoaRepository pessoaRepository;
 
     @Autowired
-    public PessoaEditService(PessoaRepository pessoaRepository) {
+    public PessoaEditServiceImpl(PessoaRepository pessoaRepository) {
         this.pessoaRepository = pessoaRepository;
     }
 

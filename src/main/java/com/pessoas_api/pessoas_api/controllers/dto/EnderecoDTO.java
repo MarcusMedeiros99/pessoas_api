@@ -10,6 +10,10 @@ public class EnderecoDTO {
     private String cidade;
     private String uf;
 
+    EnderecoDTO() {
+
+    }
+
     public EnderecoDTO(Endereco endereco) {
         this.id = endereco.getId();
         this.logradouro = endereco.getLogradouro();

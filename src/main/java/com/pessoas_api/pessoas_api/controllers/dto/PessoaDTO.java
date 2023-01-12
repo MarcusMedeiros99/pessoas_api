@@ -12,6 +12,9 @@ public class PessoaDTO {
     private LocalDate dataNascimento;
     private EnderecoDTO enderecoPrincipal;
 
+    @Deprecated
+    PessoaDTO() {};
+
     public PessoaDTO(Pessoa pessoa) {
         this.id = pessoa.getId();
         this.nome = pessoa.getNome();
