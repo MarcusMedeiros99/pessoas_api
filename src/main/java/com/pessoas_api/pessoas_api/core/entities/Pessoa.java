@@ -80,4 +80,13 @@ public class Pessoa {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public Endereco addEnderecoPrincipal(Endereco endereco) {
+        if (this.equals(endereco.getPessoa())) {
+            this.enderecos.add(endereco);
+            this.enderecoPrincipal = endereco;
+            return endereco;
+        }
+        throw new IllegalArgumentException("O endereço só pode ser adicionado apenas à pessoa que o possui.");
+    }
 }
