@@ -1,6 +1,8 @@
-package com.pessoas_api.pessoas_api.core.services;
+package com.pessoas_api.pessoas_api.core.services.pessoa;
 
+import com.pessoas_api.pessoas_api.controllers.exceptions.PessoaNotFoundException;
 import com.pessoas_api.pessoas_api.core.entities.Pessoa;
+import com.pessoas_api.pessoas_api.core.services.pessoa.forms.PessoaEditForm;
 import com.pessoas_api.pessoas_api.repositories.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +20,7 @@ public class PessoaEditService {
 
     public void edit(PessoaEditForm form) {
         Optional<Pessoa> pessoa = pessoaRepository.findById(form.getId());
-        if (pessoa.isEmpty()) throw new IllegalArgumentException("Id not found");
+        if (pessoa.isEmpty()) throw new PessoaNotFoundException("Pessoa com id %d não encontrado".formatted(form.getId()));
 
         pessoa.get().setNome(form.getNome());
         pessoa.get().setDataNascimento(form.getDataNascimento());

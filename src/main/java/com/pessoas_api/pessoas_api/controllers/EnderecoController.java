@@ -2,13 +2,16 @@ package com.pessoas_api.pessoas_api.controllers;
 
 import com.pessoas_api.pessoas_api.controllers.dto.EnderecoDTO;
 import com.pessoas_api.pessoas_api.controllers.dto.EnderecoListDTO;
+import com.pessoas_api.pessoas_api.controllers.dto.ErrorDTO;
+import com.pessoas_api.pessoas_api.controllers.exceptions.PessoaNotFoundException;
 import com.pessoas_api.pessoas_api.core.entities.Endereco;
 import com.pessoas_api.pessoas_api.core.entities.Pessoa;
-import com.pessoas_api.pessoas_api.core.services.EnderecoCreationForm;
-import com.pessoas_api.pessoas_api.core.services.EnderecoCreationService;
+import com.pessoas_api.pessoas_api.core.services.endereco.forms.EnderecoCreationForm;
+import com.pessoas_api.pessoas_api.core.services.endereco.EnderecoCreationService;
 import com.pessoas_api.pessoas_api.repositories.PessoaRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -56,6 +59,12 @@ public class EnderecoController {
         if (pessoa.isEmpty()) return ResponseEntity.notFound().build();
         return ResponseEntity
                 .ok(new EnderecoDTO(pessoa.get().getEnderecoPrincipal()));
+    }
+
+    @ExceptionHandler(PessoaNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    ErrorDTO handlePessoaNotFoundException(PessoaNotFoundException exception) {
+        return new ErrorDTO(exception.getMessage());
     }
 
 }

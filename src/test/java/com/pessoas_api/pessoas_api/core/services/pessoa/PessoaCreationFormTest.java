@@ -1,10 +1,9 @@
-package com.pessoas_api.pessoas_api.core.services;
+package com.pessoas_api.pessoas_api.core.services.pessoa;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pessoas_api.pessoas_api.core.entities.Pessoa;
+import com.pessoas_api.pessoas_api.core.services.pessoa.forms.PessoaCreationForm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;

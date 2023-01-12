@@ -1,9 +1,8 @@
-package com.pessoas_api.pessoas_api.core.services;
+package com.pessoas_api.pessoas_api.core.services.pessoa;
 
-import com.pessoas_api.pessoas_api.core.entities.Endereco;
 import com.pessoas_api.pessoas_api.core.entities.Pessoa;
+import com.pessoas_api.pessoas_api.core.services.pessoa.forms.PessoaCreationForm;
 import com.pessoas_api.pessoas_api.repositories.PessoaRepository;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;

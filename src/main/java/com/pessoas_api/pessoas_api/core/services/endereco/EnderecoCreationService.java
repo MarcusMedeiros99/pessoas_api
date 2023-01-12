@@ -1,11 +1,12 @@
-package com.pessoas_api.pessoas_api.core.services;
+package com.pessoas_api.pessoas_api.core.services.endereco;
 
+import com.pessoas_api.pessoas_api.controllers.exceptions.PessoaNotFoundException;
 import com.pessoas_api.pessoas_api.core.entities.Endereco;
 import com.pessoas_api.pessoas_api.core.entities.Pessoa;
+import com.pessoas_api.pessoas_api.core.services.endereco.forms.EnderecoCreationForm;
 import com.pessoas_api.pessoas_api.repositories.EnderecoRepository;
 import com.pessoas_api.pessoas_api.repositories.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -25,7 +26,7 @@ public class EnderecoCreationService {
     public Endereco createFrom(EnderecoCreationForm form, Long pessoaId) {
         Optional<Pessoa> pessoa = pessoaRepository.findById(pessoaId);
 
-        if (pessoa.isEmpty()) throw new IllegalArgumentException("Id não encontrado");
+        if (pessoa.isEmpty()) throw new PessoaNotFoundException("Pessoa com id %d não encontrado".formatted(pessoaId));
         Endereco endereco = form.convertForPessoa(pessoa.get());
 
         endereco = enderecoRepository.save(endereco);
